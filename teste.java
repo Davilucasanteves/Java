@@ -1,4 +1,4 @@
-public class Atribuicoes {
+public class Teste {
     public static void main(String[] args) {
         float x = 1.0f;
         float y = 2.0f;
