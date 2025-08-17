@@ -12,7 +12,7 @@ public class Teste5 {
             System.out.println("Digite a nota do aluno "+ i +": ");
             notas[i] = scanner.nextInt();
             System.out.println("Digite o nome do aluno "+ i +": ");
-        alunos[i] = scanner.next();
+            alunos[i] = scanner.next();
             soma = soma + notas[i];
 
             if(maiorNota < notas[i]){
