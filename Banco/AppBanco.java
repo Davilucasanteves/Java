@@ -22,22 +22,29 @@ public class AppBanco {
         
         System.out.println(menu());
         op = teclado.nextInt();
+        teclado.nextLine();
         
         while (op!=0){
             switch (op){
                 case 1:{//Cadastrar conta
                     String nome;
+                    int numero;
                     
 				    if (contConta ==0){
                         System.out.print("Digite o nome do cliente: ");
                         nome = teclado.next();
-                    	conta1 = new Conta(nome, 1000);
+                        System.out.print("Digite o numero da conta: ");
+                        numero = teclado.nextInt();
+                        teclado.nextLine();
+                    	conta1 = new Conta(nome, 1000, numero);
                     	contConta++;
                     	System.out.println("Conta criada com sucesso!");
 				    }if(contConta >1){
                         System.out.print("Digite o nome do cliente: ");
                         nome = teclado.next();
-						conta2 = new Conta(nome, 500);
+                        System.out.print("Digite o numero da conta: ");
+                        numero = teclado.nextInt();
+						conta2 = new Conta(nome, 500, numero);
                     	contConta++;
                     	System.out.println("Conta criada com sucesso!");
 				    }else {
@@ -48,6 +55,7 @@ public class AppBanco {
                 case 2:{//Depositar
                     System.out.print("Digite o numero da conta: ");
                     int numConta = teclado.nextInt();
+                    teclado.nextLine();
                     System.out.print("Digite o valor do deposito: ");
                     double valor = teclado.nextDouble();
                     if (numConta == conta1.getNumero())
@@ -96,6 +104,7 @@ public class AppBanco {
                 case 6: {//Transferir
                     System.out.print("Digite o numero da conta que fará a transferência: ");
                     int numConta = teclado.nextInt();
+                    teclado.nextLine();
                     System.out.print("Digite o valor de transferência: ");
                     double valor = teclado.nextDouble();
                     if (numConta == conta1.getNumero())

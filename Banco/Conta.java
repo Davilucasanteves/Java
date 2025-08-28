@@ -4,9 +4,10 @@ public class Conta{
     double saldo;
 
     //Construtores
-    public Conta(String cliente, double saldo){
+    public Conta(String cliente, double saldo, int numero){
         this.cliente=cliente;
         this.saldo=saldo;
+        this.numero=numero;
     }
 
     public Conta(String cliente){
