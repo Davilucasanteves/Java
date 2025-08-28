@@ -39,7 +39,7 @@ public class AppBanco {
                     	contConta++;
                     	JOptionPane.showMessageDialog (null, "Conta criada com sucesso!");
                         break;
-				    }if(contConta ==1){
+				    }else if(contConta ==1){
                         nome = JOptionPane.showInputDialog("Digite o nome do cliente: ");
                         numero =  Integer.parseInt (JOptionPane.showInputDialog("Digite o número da conta: "));
 						conta2 = new Conta(nome, 500, numero);
@@ -56,7 +56,7 @@ public class AppBanco {
                     double valor =  Double.parseDouble (JOptionPane.showInputDialog("Digite o valor do deposito: "));
                     if (numConta == conta1.getNumero())
                         conta1.depositar(valor);
-                    if (numConta == conta2.getNumero())
+                    else if (numConta == conta2.getNumero())
                         conta2.depositar(valor);
                     else
                         JOptionPane.showMessageDialog (null, "Conta não encontrada!");
@@ -67,7 +67,7 @@ public class AppBanco {
                     double valor =  Double.parseDouble (JOptionPane.showInputDialog("Digite o valor a ser sacado: "));
                     if (numConta == conta1.getNumero())
                         conta1.sacar(valor);
-                    if (numConta == conta2.getNumero())
+                    else if (numConta == conta2.getNumero())
                         conta2.sacar(valor);
                     else
                         JOptionPane.showMessageDialog (null, "Conta não encontrada!");
@@ -77,7 +77,7 @@ public class AppBanco {
                     int numConta=  Integer.parseInt (JOptionPane.showInputDialog("Digite o número da conta para ver o saldo: "));
                     if (numConta == conta1.getNumero())
                         JOptionPane.showMessageDialog (null, "O saldo é: "+ conta1.getSaldo());
-                    if (numConta == conta2.getNumero())
+                    else if (numConta == conta2.getNumero())
                         JOptionPane.showMessageDialog (null, "O saldo é: "+ conta2.getSaldo());
                     else
                         JOptionPane.showMessageDialog (null, "Conta não encontrada!");
@@ -86,9 +86,9 @@ public class AppBanco {
                 case 5: {//Imprimir dados da conta
                     int numConta=  Integer.parseInt (JOptionPane.showInputDialog("Digite o número da conta: "));
                     if (numConta == conta1.getNumero())
-                        conta1.imprimirConta();
-                    if (numConta == conta2.getNumero())
-                        conta2.imprimirConta();
+                        JOptionPane.showMessageDialog(null, conta1.imprimirConta());
+                    else if (numConta == conta2.getNumero())
+                        JOptionPane.showMessageDialog(null, conta2.imprimirConta());
                     else
                         JOptionPane.showMessageDialog (null, "Conta não encontrada!");
 				    break;
@@ -98,7 +98,7 @@ public class AppBanco {
                     double valor =  Double.parseDouble (JOptionPane.showInputDialog("Digite o valor da transferência: "));
                     if (numConta == conta1.getNumero())
                         conta1.transferir(conta2, valor);
-                    if (numConta == conta2.getNumero())
+                    else if (numConta == conta2.getNumero())
                         conta2.transferir(conta1, valor);
                     else
                         JOptionPane.showMessageDialog (null, "Conta não encontrada!");
