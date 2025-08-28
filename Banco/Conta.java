@@ -28,16 +28,20 @@ public class Conta{
             saldo +=valor;
     } 
 
-    void transferir(){
-
+    void transferir(Conta conta, double valor){
+        this.sacar(valor);
+        conta.depositar(valor);
     }
 
     String imprimirConta(){
-
+        return "Número da conta: "+ this.numero+ "   Nome do cliente: "+ this.cliente+"\nSaldo da conta: "+ this.saldo;
     } 
 
-    boolean comparar(){
-        if()
+    boolean comparar(Conta conta){
+        if(this.numero== conta.numero && this.cliente== conta.cliente){
+            return true;
+        }
+        return false;
     }
 
     //Questão 3. l) Como saldo é uma variável que pode mudar ao longo do projeto, é importante que ela tenha um setSaldo.
