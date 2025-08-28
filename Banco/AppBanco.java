@@ -39,7 +39,8 @@ public class AppBanco {
                     	conta1 = new Conta(nome, 1000, numero);
                     	contConta++;
                     	System.out.println("Conta criada com sucesso!");
-				    }if(contConta >1){
+                        break;
+				    }if(contConta ==1){
                         System.out.print("Digite o nome do cliente: ");
                         nome = teclado.next();
                         System.out.print("Digite o numero da conta: ");
