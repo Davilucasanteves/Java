@@ -1,4 +1,5 @@
-import java.util.Scanner;
+//import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class AppBanco {
 
@@ -18,11 +19,10 @@ public class AppBanco {
         Conta conta1=null, conta2=null;
         int contConta=0;
         int op;
-        Scanner teclado = new Scanner (System.in);
+        //Scanner teclado = new Scanner (System.in);
         
-        System.out.println(menu());
-        op = teclado.nextInt();
-        teclado.nextLine();
+        //System.out.println(menu());
+        op =  Integer.parseInt(JOptionPane.showInputDialog(menu()));
         
         while (op!=0){
             switch (op){
@@ -31,104 +31,91 @@ public class AppBanco {
                     int numero;
                     
 				    if (contConta ==0){
-                        System.out.print("Digite o nome do cliente: ");
-                        nome = teclado.next();
-                        System.out.print("Digite o numero da conta: ");
-                        numero = teclado.nextInt();
-                        teclado.nextLine();
+                        nome = JOptionPane.showInputDialog("Digite o nome do cliente: ");
+
+                        numero =  Integer.parseInt (JOptionPane.showInputDialog("Digite o número da conta: "));
+
                     	conta1 = new Conta(nome, 1000, numero);
                     	contConta++;
-                    	System.out.println("Conta criada com sucesso!");
+                    	JOptionPane.showMessageDialog (null, "Conta criada com sucesso!");
                         break;
 				    }if(contConta ==1){
-                        System.out.print("Digite o nome do cliente: ");
-                        nome = teclado.next();
-                        System.out.print("Digite o numero da conta: ");
-                        numero = teclado.nextInt();
+                        nome = JOptionPane.showInputDialog("Digite o nome do cliente: ");
+                        numero =  Integer.parseInt (JOptionPane.showInputDialog("Digite o número da conta: "));
 						conta2 = new Conta(nome, 500, numero);
                     	contConta++;
-                    	System.out.println("Conta criada com sucesso!");
+                    	JOptionPane.showMessageDialog (null, "Conta criada com sucesso!");;
 				    }else {
-                        System.out.println("Já existem duas contas cadastradas!");
+                        JOptionPane.showMessageDialog (null, "Já existem duas contas criadas!");
                     }
                     break;
                 }
                 case 2:{//Depositar
-                    System.out.print("Digite o numero da conta: ");
-                    int numConta = teclado.nextInt();
-                    teclado.nextLine();
-                    System.out.print("Digite o valor do deposito: ");
-                    double valor = teclado.nextDouble();
+                    int numConta;
+                    numConta=  Integer.parseInt (JOptionPane.showInputDialog("Digite o número da conta: "));
+                    double valor =  Double.parseDouble (JOptionPane.showInputDialog("Digite o valor do deposito: "));
                     if (numConta == conta1.getNumero())
                         conta1.depositar(valor);
                     if (numConta == conta2.getNumero())
                         conta2.depositar(valor);
                     else
-                        System.out.println("Conta não encontrada!");
+                        JOptionPane.showMessageDialog (null, "Conta não encontrada!");
                     break;
                 }
                 case 3:{//sacar
-                    System.out.print("Digite o numero da conta: ");
-                    int numConta = teclado.nextInt();
-                    System.out.print("Digite o valor a ser sacado: ");
-                    double valor = teclado.nextDouble();
+                    int numConta=  Integer.parseInt (JOptionPane.showInputDialog("Digite o número da conta: "));
+                    double valor =  Double.parseDouble (JOptionPane.showInputDialog("Digite o valor a ser sacado: "));
                     if (numConta == conta1.getNumero())
                         conta1.sacar(valor);
                     if (numConta == conta2.getNumero())
                         conta2.sacar(valor);
                     else
-                        System.out.println("Conta não encontrada!");
+                        JOptionPane.showMessageDialog (null, "Conta não encontrada!");
                     break;
                 }
                 case 4: {//Consultar saldo
-                    System.out.print("Digite o numero da conta para ver o saldo: ");
-                    int numConta = teclado.nextInt();
+                    int numConta=  Integer.parseInt (JOptionPane.showInputDialog("Digite o número da conta para ver o saldo: "));
                     if (numConta == conta1.getNumero())
-                        System.out.println("O saldo é: "+ conta1.getSaldo());
+                        JOptionPane.showMessageDialog (null, "O saldo é: "+ conta1.getSaldo());
                     if (numConta == conta2.getNumero())
-                        System.out.println("O saldo é: "+ conta2.getSaldo());
+                        JOptionPane.showMessageDialog (null, "O saldo é: "+ conta2.getSaldo());
                     else
-                        System.out.println("Conta não encontrada!");
+                        JOptionPane.showMessageDialog (null, "Conta não encontrada!");
 				    break;
                 }
                 case 5: {//Imprimir dados da conta
-                    System.out.print("Digite o numero da conta: ");
-                    int numConta = teclado.nextInt();
+                    int numConta=  Integer.parseInt (JOptionPane.showInputDialog("Digite o número da conta: "));
                     if (numConta == conta1.getNumero())
                         conta1.imprimirConta();
                     if (numConta == conta2.getNumero())
                         conta2.imprimirConta();
                     else
-                        System.out.println("Conta não encontrada!");
+                        JOptionPane.showMessageDialog (null, "Conta não encontrada!");
 				    break;
                 }
                 case 6: {//Transferir
-                    System.out.print("Digite o numero da conta que fará a transferência: ");
-                    int numConta = teclado.nextInt();
-                    teclado.nextLine();
-                    System.out.print("Digite o valor de transferência: ");
-                    double valor = teclado.nextDouble();
+                    int numConta=  Integer.parseInt (JOptionPane.showInputDialog("Digite o número da conta que fará a transferência: "));
+                    double valor =  Double.parseDouble (JOptionPane.showInputDialog("Digite o valor da transferência: "));
                     if (numConta == conta1.getNumero())
                         conta1.transferir(conta2, valor);
                     if (numConta == conta2.getNumero())
                         conta2.transferir(conta1, valor);
                     else
-                        System.out.println("Conta não encontrada!");
+                        JOptionPane.showMessageDialog (null, "Conta não encontrada!");
                     break;
                 }
                 case 7: {//Comparar contas
                     boolean result= conta1.comparar(conta2);
                     if(result)
-                        System.out.println("Contas iguais!!!");
+                        JOptionPane.showMessageDialog (null, "Contas iguais!");
                     else
-                        System.out.println("Contas diferentes!!!");
+                        JOptionPane.showMessageDialog (null, "Contas diferentes!");
                     break;
                 }
                 default:
-                    System.out.println("Opção inválida!");
+                    JOptionPane.showMessageDialog (null, "Opção inválida!");
             }
-            System.out.println(menu());
-            op = teclado.nextInt();
+            op =  Integer.parseInt(JOptionPane.showInputDialog(menu()));
         }
     }  
 }
