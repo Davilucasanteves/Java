@@ -6,8 +6,8 @@ public class Questao02g
                 + "1 - Cadastrar produto\n"
                 + "2 - Fazer pedido\n"
                 + "3 - Inserir itens\n"
-                + "3 - Calcular valor do pedido\n"
-                + "4 - Comprar produto\n" //comprar de produtos para lanchonete(COMPRAR)
+                + "4 - Calcular valor do pedido\n"
+                + "5 - Comprar produto\n" //comprar de produtos para lanchonete(COMPRAR)
                 + "0 - sair";
     }
     public static void main(String[] args) {
@@ -17,7 +17,7 @@ public class Questao02g
         Produto produtos[] = new Produto[NUM_PRODUTOS];
         int contProduto=0;
 
-        Produto p;
+        Produto p = null;
         Item item = null;
         Pedido pedido = null;
 
@@ -41,18 +41,37 @@ public class Questao02g
                 case 2: 
                     System.out.println("Digite o código do produto a vender: ");
                     int codigo = teclado.nextInt();
+                    while(codigo>p.getNumProdutos()){
+                        System.out.println("Código inválido! Digite de novo\nDigite o código do produto a vender: ");
+                        codigo = teclado.nextInt();
+                    }
+                    if(item==null){
+                        System.out.println("Insira itens primeiro!\n");
+                    }
                     produtos[codigo].venderProduto(item.getQuantidade());
+                    System.out.println("\nAgora tem "+produtos[codigo].getEstoque()+" desse produto.");
+                    break;
                 case 3:
-                    System.out.println("Digite o código do produto a inserir: ");
+                    System.out.println("Digite o código do produto a inserir na compra: ");
                     codigo = teclado.nextInt();
-                    System.out.println("Digite a quantidade do produto a inserir: ");
+                    while(codigo>p.getNumProdutos()){
+                        System.out.println("Código inválido! Digite de novo\nDigite o código do produto a vender: ");
+                        codigo = teclado.nextInt();
+                    }
+                    System.out.println("Digite a quantidade do produto a inserir na compra: ");
                     int qtd = teclado.nextInt();
                     item = new Item(produtos[codigo]);
                     item.setQuantidade(qtd);
                     pedido = new Pedido("14/03/2413");
                     pedido.inserirItem(item);
+                    break;
                 case 4: 
-                    System.out.println("Seu pedido deu: " + pedido.calcularTotalPedido());
+                    if (pedido!= null) {
+                        System.out.println("Seu pedido deu: " + pedido.calcularTotalPedido()+"\n");
+                    } else {
+                        System.out.println("Nenhum pedido criado!");
+                    }
+                    break;
                 case 5:
                     System.out.println("Digite o nome do produto: ");
                     nome = teclado.next();
@@ -62,6 +81,9 @@ public class Questao02g
                     quantidade = teclado.nextInt();
                     Produto p2 =  new Produto(nome, valor);//não pode ter quantidade para não sobrescrever os trem tudo
                     p2.comprarProduto(quantidade);
+                    break;
+                default:
+                    System.err.println("Opção inválida!");
             }
             System.out.println(menu());
             op = teclado.nextInt();

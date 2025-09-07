@@ -22,8 +22,10 @@ public class Pedido {
     
     public double calcularTotalPedido(){
         double total=0;
-        for (Item i: itens){
-            total+=i.calcularSubTotal();
+        for(int i= 0; i<contItem; i++){ //trocar for-each para não ler campos nulos.
+            if(itens[i]!=null){
+                total+= itens[i].calcularSubTotal();
+            }
         }
         return total;
     }

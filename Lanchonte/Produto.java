@@ -30,10 +30,10 @@ public class Produto {
     }
     public boolean venderProduto(int qtd){
         boolean temProduto=false;
-		if (estoque >= qtd){
-                    estoque = estoque - qtd;
-                    temProduto=true;
-		}
+		if(estoque >= qtd){
+            estoque = estoque - qtd;
+            temProduto=true;
+        }
         return temProduto;
     }
         public void comprarProduto(int qtd){
