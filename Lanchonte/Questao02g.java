@@ -8,6 +8,7 @@ public class Questao02g
                 + "3 - Inserir itens\n"
                 + "4 - Calcular valor do pedido\n"
                 + "5 - Comprar produto\n" //comprar de produtos para lanchonete
+                + "6 - Produtos cadastrados\n"
                 + "0 - sair";
     }
     public static void main(String[] args) {
@@ -16,6 +17,7 @@ public class Questao02g
         final int NUM_PRODUTOS = 10;
         Produto produtos[] = new Produto[NUM_PRODUTOS];
         int contProduto=0;
+        int codigo;
 
         Produto p = null;
         Item item = null;
@@ -40,7 +42,7 @@ public class Questao02g
                     break;
                 case 2: 
                     System.out.println("Digite o código do produto a vender: ");
-                    int codigo = teclado.nextInt();
+                    codigo = teclado.nextInt();
                     if(codigo>contProduto){
                         System.out.println("Código inválido! Digite um válido ou cadastre algum produto!\n");
                         break;
@@ -52,6 +54,9 @@ public class Questao02g
                     System.out.println("Agora tem "+produtos[codigo].getEstoque()+" desse produto.\n");
                     break;
                 case 3:
+                    if(pedido==null){
+                        pedido = new Pedido("14/03/2413");//evita sobrescrever pedidos, é um só por execução de código
+                    }
                     System.out.println("Digite o código do produto a inserir na compra: ");
                     codigo = teclado.nextInt();
                     if(codigo>contProduto){
@@ -62,7 +67,6 @@ public class Questao02g
                     int qtd = teclado.nextInt();
                     item = new Item(produtos[codigo]);
                     item.setQuantidade(qtd);
-                    pedido = new Pedido("14/03/2413");
                     pedido.inserirItem(item);
                     break;
                 case 4: 
@@ -96,6 +100,16 @@ public class Questao02g
 
                     if(!achou){
                         System.out.println("Produto não consta nos cadastros, cadastre-o!\n");
+                    }
+                    break;
+                case 6:
+                    if(produtos==null) System.out.println("Não há produtos no sistema!\n");
+                    else{
+                        System.out.println("Produtos no sistema: \n");
+                        for(Produto prod : produtos){
+                            if(prod==null) break;
+                            System.out.println(prod.imprimir());                            
+                        }
                     }
                     break;
                 default:
