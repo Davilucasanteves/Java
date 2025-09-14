@@ -1,13 +1,49 @@
 package controle;
+import java.util.ArrayList;
+import modelo.Contato;
 
 public class ControleContato{
-    public void cadastrarContato (String nome, String telefone, String email);//instancia um contato e adiciona na lista de contatos
-    public Contato pesquisarContato(String nome); /* procura na lista de contatos um contato com o nome fornecido, se encontrar retorna o contato, caso contrário, retorna null*/
-    public Contato pesquisarContato(int id); /* procura na lista de contatos um contato com o id fornecido, se encontrar retorna o contato, caso contrário, retorna null*/
-    public void removerContato (String nome);
-    public String listarContato (); //lista todos os contatos cadastrados
+    private ArrayList<Contato> contatos = new ArrayList();
 
-    public ControleContato(){
+    public void cadastrarContato(int id,String nome,String telefone,String email){
+        Contato c=new Contato(id,nome,telefone,email);
+        contatos.add(c);
+    }
 
+    public Contato pesquisarContato(String nome){
+        for(Contato c:contatos){
+            if(c.getNome().equals(nome)){
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public Contato pesquisarContato(int id){
+        for(Contato c:contatos){
+            if(c.getId()==id){
+                return c;
+            }
+        }
+        return null;
+    }
+
+    public void removerContato(String nome){
+        Contato removido=null;
+        for(Contato c:contatos){
+            if(c.getNome().equals(nome)){
+                removido=c;
+                break;
+            }
+        }
+        if(removido!=null){contatos.remove(removido);}
+    }
+
+    public String listarContato(){
+        String resultado="";
+        for(Contato c:contatos){
+            resultado+=c.toString()+"\n";
+        }
+        return resultado;
     }
 }
