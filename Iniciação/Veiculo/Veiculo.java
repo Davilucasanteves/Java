@@ -3,7 +3,7 @@
 */
 
 /** Respostas da Questão 1:
-* a) A princípio, o código não correu devido a ausência dos getters. Ao implementá-lo corretamente, criando os devidos getters, o código solicita ao usuário informações sobre 
+* a) A princípio, o código não correu devido à ausência dos getters. Ao implementá-lo corretamente, criando os devidos getters, o código solicita ao usuário informações sobre 
 * o veículo, como o código dele, a cor e o tipo.
 * 
 * b) Os getters de todos os atributos privados são necessários para que a classe AppHoraRush os obtenha. Quanto aos setters, apenas se faz necessário o setter da variável posicao
