@@ -9,41 +9,45 @@ public class CadastroProdutos{
 
     public void adicionar(Produto produto) throws ProdutoJaExisteException, PrecoInvalidoException{
         for(int i=0; i<produtos.size(); i++){
-            if(produto.getCodigo().equals(produtos.get(i).getCodigo())){
+            if(produto.getCodigo().equals(produtos.get(i).getCodigo()))
                 throw new ProdutoJaExisteException();
-            }else if(produto.getPreco()<=0){
-                throw new PrecoInvalidoException();
-            }else
-                produtos.add(produto);
         }
+
+        if(produto.getPreco()<=0){
+            throw new PrecoInvalidoException();
+        }else
+            produtos.add(produto);
     }
 
     public void remover(String codigo) throws ProdutoNaoEncontradoException{
-        boolean achou=false;
         for(int i=0; i<produtos.size(); i++){
             if(codigo.equals(produtos.get(i).getCodigo())){
-                produtos.remove(produtos.get(i));
-                achou=true;
+                produtos.remove(i);
+                return;
             }
         }
-        if(!achou)
-            throw new ProdutoNaoEncontradoException();
+        throw new ProdutoNaoEncontradoException();
     }
 
     public Produto buscar(String codigo) throws ProdutoNaoEncontradoException{
-        boolean achou=false;
         for(int i=0; i<produtos.size(); i++){
             if(codigo.equals(produtos.get(i).getCodigo())){
-                achou=true;
                 return produtos.get(i);
             }
         }
-        if(!achou)
-            throw new ProdutoNaoEncontradoException();
-        return null;
+        
+        throw new ProdutoNaoEncontradoException();
     }
 
     public ArrayList<Produto> getProdutos(){
         return produtos;
+    }
+
+    public String mostrarProdutos(){
+        String result="";
+        for(int i=0; i<produtos.size(); i++){
+            result+= produtos.get(i).getNome() + " - " + produtos.get(i).getCodigo() + " - " + produtos.get(i).getPreco()+"\n";
+        }
+        return "Info: " + result;
     }
 }
