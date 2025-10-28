@@ -38,5 +38,15 @@ public class ControleProduto{
     
     public void removerProduto(Produto produto){
         repositorioProduto.getAllProdutos().remove(produto);
-     }
+    }
+
+    public String mostrar(){
+        String result="";
+        for(int i=0; i<listarProduto().size(); i++){
+            result+="\n" + listarProduto().get(i).getCodigo() + " - " + 
+            listarProduto().get(i).getDescricao() + " - "
+            + listarProduto().get(i).getValor() + "\n";
+        }
+        return "Info: "+result;
+    }
 }  

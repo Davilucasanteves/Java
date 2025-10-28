@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,7 +12,7 @@ import java.util.Scanner;
 public class RepositorioArquivoProduto implements IProduto{
     private final String nomeArquivo;
     private File arquivo;
-    BufferedWriter bw = null;
+    //BufferedWriter bw = null;
     
     public RepositorioArquivoProduto(){
         nomeArquivo="produto.txt";
@@ -19,7 +20,9 @@ public class RepositorioArquivoProduto implements IProduto{
     }
 
     public void createProduto (Produto p){
-        try{
+        // Usa try-with-resources para garantir o fechamento do BufferedWriter.
+        // O "true" em new FileWriter(arquivo, true) garante que os dados serão ANEXADOS, e não SOBRESCRITOS.
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(arquivo, true))){
             bw.write(""+p.getCodigo());
             bw.write("\t"+p.getDescricao());
             bw.write("\t"+p.getValor());

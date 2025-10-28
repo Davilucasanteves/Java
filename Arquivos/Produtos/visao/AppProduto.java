@@ -21,16 +21,21 @@ public class AppProduto{
                         descricao= JOptionPane.showInputDialog("Qual a descrição do produto: ");
                         valor= Double.parseDouble(JOptionPane.showInputDialog("Qual o valor do produto: "));
                         cp.cadastraProduto(codigo, descricao, valor);
+                        break;
                     case 2:
                         codigo= Integer.parseInt(JOptionPane.showInputDialog("Qual o código do produto: "));
                         Produto p = cp.pesquisarProduto(codigo);
                         JOptionPane.showMessageDialog(null, "Seu produto é: "+ p.getDescricao());
+                        break;
                     case 3: 
                         codigo= Integer.parseInt(JOptionPane.showInputDialog("Qual o código do produto: "));
                         descricao= JOptionPane.showInputDialog("Qual a descrição do produto: ");
                         valor= Double.parseDouble(JOptionPane.showInputDialog("Qual o valor do produto: "));
                         Produto pDeleta = new Produto(codigo, descricao, valor);
                         cp.removerProduto(pDeleta);
+                        break;
+                    case 0:
+                        JOptionPane.showMessageDialog(null, "Seus produtos são: "+ cp.mostrar());
                 }
             }while(op!=0);
         } catch (Exception e) {
