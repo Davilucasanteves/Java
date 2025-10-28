@@ -1,0 +1,24 @@
+{
+    "files.autoSave": "afterDelay",
+    "redhat.telemetry.enabled": true,
+    "explorer.confirmDragAndDrop": false,
+    "C_Cpp.default.compilerPath": "c:\\Users\\24680\\OneDrive\\Desktop\\VS Code\\C++\\atv35.c++",
+    "files.associations": {
+        "*.c++": "cpp"
+    },
+    "git.autofetch": true,
+    "jdk.jdkhome": "c:\\Users\\24680\\Desktop\\Oracle_JDK-24",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "terminal.integrated.shellIntegration.showCommandGuide": false,
+    "editor.suggest.showWords": false,
+    "editor.inlineSuggest.enabled": false,
+    "code-runner.runInTerminal": true,
+    "editor.minimap.enabled": false,
+    "java.configuration.runtimes": [
+        {
+        "name": "JavaSE-24",
+        "path": "C:\\Users\\24680\\Desktop\\Oracle_JDK-24", // OU C:/Users/24680/Desktop/Oracle_JDK-24
+        "default": true
+        }   
+    ]
+}
