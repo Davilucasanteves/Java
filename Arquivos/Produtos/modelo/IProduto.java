@@ -8,5 +8,5 @@ public interface IProduto
     public ArrayList<Produto> getAllProdutos();
     public void createProduto (Produto produto);
     public Produto readProduto(int codigo);
-    //public void deleteProduto(Produto produto);
+    public void deleteProduto(Produto produto);
 }
