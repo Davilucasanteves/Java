@@ -47,7 +47,8 @@ public class Revista implements IProduto, IPromocional {
     }
     
     public boolean aplicaDesconto(double porcentagem){
-        return false;
+        valor-=valor*porcentagem;
+        return true;
     }
     
 }

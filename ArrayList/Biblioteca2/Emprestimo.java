@@ -7,7 +7,7 @@ public class Emprestimo{
     private int diasDeAtraso=0;
     private int numLivros=0;
     private int multa=0;
-    private Livro todosLivro;
+    private Livro todosLivro= new Livro("A", "A-autor");
 
     private ArrayList<Livro> livrosEmprestados = new ArrayList();
 

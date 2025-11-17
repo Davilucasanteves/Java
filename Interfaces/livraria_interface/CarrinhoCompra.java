@@ -1,14 +1,15 @@
 //Classe CarrinhoCompras
 import java.util.ArrayList;
 public class CarrinhoCompra {
-    ArrayList <Livro> livros = new ArrayList();
-    ArrayList <Revista> revistas = new ArrayList();
+    ArrayList <IProduto> produtos = new ArrayList();
     
     public void adicionar(Livro l){
-        livros.add(l);
+        produtos.add(l);
     }
     
     
+    //Resposta 1_i) Ao comentar este método, a chamada dele
+    //na classe principal AppLivraria teve de ser removida.
     public boolean aplicarDesconto (IPromocional p, double desconto){
         return p.aplicaDesconto(desconto);
     }
@@ -16,18 +17,13 @@ public class CarrinhoCompra {
    
     public double getTotal (){
         double total =0;
-        for (Livro l: livros){
+        for (IProduto l: produtos){
             total += l.getValor();
-        }
-        for (Revista r: revistas){
-            total += r.getValor();
         }
         return total;
     }  
     
     public void adicionar(Revista r){
-        revistas.add(r);
+        produtos.add(r);
     }
-    
-    
 }
